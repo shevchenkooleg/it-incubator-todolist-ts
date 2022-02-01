@@ -4,7 +4,7 @@ type TodoListHeaderPropsType = {
     title: string
 }
 
-const TodoListHeader = (props:TodoListHeaderPropsType) => {
+const Header = (props:TodoListHeaderPropsType) => {
     return (
         <div>
             <h3>{props.title}</h3>
@@ -12,4 +12,4 @@ const TodoListHeader = (props:TodoListHeaderPropsType) => {
     );
 };
 
-export default TodoListHeader;
+export default Header;

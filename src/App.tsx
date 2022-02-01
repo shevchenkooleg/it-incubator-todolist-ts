@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import TodoList, {TaskType} from "./TodoList";
+import TodoList, {TaskType} from "./TodoList/TodoList";
 
 let whatToLearnTasks: Array<TaskType> = [
     {
@@ -55,7 +55,6 @@ let whatToByTasks: Array<TaskType> = [
         isDone: true
     }
 ]
-
 
 
 function App() {
