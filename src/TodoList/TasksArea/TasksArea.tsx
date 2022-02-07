@@ -1,21 +1,21 @@
 import React from 'react';
 import NewTaskForm from "./NewTaskForm/NewTaskForm";
-import TaskItem from "./TasksItem/TaskItem";
-import {TaskType, TodoListPropsType} from "../TodoList";
+import TaskItems from "./TasksItem/TaskItem";
+import {TaskType} from "../TodoList";
 
 type TasksAreaPropsType = {
     tasks: Array<TaskType>
+    removeTask: (taskID: number) => void
 }
 
 
 
 const TasksArea = (props: TasksAreaPropsType) => {
 
-    console.log(props.tasks)
     return (
         <div>
             <NewTaskForm/>
-            <TaskItem tasks={props.tasks}/>
+            <TaskItems tasks={props.tasks} removeTask={props.removeTask}/>
         </div>
     );
 };

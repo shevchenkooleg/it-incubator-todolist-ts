@@ -3,11 +3,14 @@ import Header from "./Header/Header";
 import ButtonsBar from "./ButtonsBar/ButtonsBar";
 import TasksArea from "./TasksArea/TasksArea";
 import style from './TasksArea/TodoList.module.css'
+import {filterValuesType} from "../App";
 
 
 export type TodoListPropsType = {
     title: string
     tasks: Array<TaskType>
+    removeTask: (taskID: number) => void
+    changeFilter: (filter: filterValuesType) => void
 }
 
 export type TaskType = {
@@ -18,13 +21,11 @@ export type TaskType = {
 
 const TodoList = (props: TodoListPropsType) => {
 
-    // console.log(props.tasks)
-
     return (
         <div className={style.content}>
             <Header title={props.title} />
-            <TasksArea tasks={props.tasks} />
-            <ButtonsBar/>
+            <TasksArea tasks={props.tasks} removeTask={props.removeTask}/>
+            <ButtonsBar changeFilter={props.changeFilter}/>
         </div>
     );
 };

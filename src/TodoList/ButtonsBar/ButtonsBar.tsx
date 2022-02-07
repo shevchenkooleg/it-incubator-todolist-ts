@@ -1,11 +1,16 @@
 import React from 'react';
+import {filterValuesType} from "../../App";
 
-const ButtonsBar = () => {
+type ButtonsBarPropsType = {
+    changeFilter: (filter: filterValuesType) => void
+}
+
+const ButtonsBar = (props: ButtonsBarPropsType) => {
     return (
         <div>
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
+            <button onClick={() => props.changeFilter('all')}>All</button>
+            <button onClick={() => props.changeFilter('active')}>Active</button>
+            <button onClick={() => props.changeFilter('completed')}>Completed</button>
         </div>
     );
 };

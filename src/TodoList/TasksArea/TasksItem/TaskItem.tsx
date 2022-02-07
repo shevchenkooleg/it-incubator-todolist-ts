@@ -3,16 +3,24 @@ import {TaskType} from "../../TodoList";
 
 type TaskPropsType = {
     tasks: Array<TaskType>
+    removeTask: (taskID: number) => void
 }
 
-const TaskItem = (props: TaskPropsType) => {
+const TaskItems = (props: TaskPropsType) => {
+    const tasksComponentsList = props.tasks.map(task => {
+        return (
+            <li key={task.id}>
+                <input type="checkbox" checked={task.isDone}/>
+                <span>{task.title}</span>
+                <button onClick={() => props.removeTask(task.id)}>X</button>
+            </li>)
+    })
+
     return (
         <div>
-            <li><input type="checkbox" checked={props.tasks[0].isDone}/> <span>{props.tasks[0].title}</span></li>
-            <li><input type="checkbox" checked={props.tasks[1].isDone}/> <span>{props.tasks[1].title}</span></li>
-            <li><input type="checkbox" checked={props.tasks[2].isDone}/> <span>{props.tasks[2].title}</span></li>
+            {tasksComponentsList}
         </div>
     );
 };
 
-export default TaskItem;
+export default TaskItems;
