@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
 import TodoList, {TaskType} from "./TodoList/TodoList";
+import { v1 } from 'uuid';
+import taskItem from "./TodoList/TasksArea/TasksItem/TaskItem";
 
 // let whatToLearnTasks: Array<TaskType> = [
 //     {
@@ -58,21 +60,20 @@ export type filterValuesType = 'all' | 'active' | 'completed'
 
 
 function App() {
-
     const [tasks, setTasks] = useState<Array<TaskType>>(
         [
             {
-                id: 1,
+                id: v1(),
                 title: 'Redux',
                 isDone: true
             },
             {
-                id: 2,
+                id: v1(),
                 title: 'React',
                 isDone: false
             },
             {
-                id: 3,
+                id: v1(),
                 title: 'JS',
                 isDone: true
             }
@@ -81,10 +82,19 @@ function App() {
 
     const [filt, setFilter] = useState<filterValuesType>('all')
 
-    const removeTask = (taskID: number) => {
+    const removeTask = (taskID: string) => {
         const filteredTasks = tasks.filter(task => task.id !== taskID)
         setTasks(filteredTasks)
         console.log(filteredTasks)
+    }
+
+    const addTask = (title: string) => {
+        // const newTask: TaskType = {
+        //     id: v1(), title: title, isDone: false
+        // }
+        // const updatedTasks = [newTask, ...tasks]
+        // setTasks(updatedTasks)
+        setTasks([{id: v1(), title: title, isDone: false}, ...tasks])
     }
 
     const getFilteredTasksForRender = () => {
@@ -108,7 +118,7 @@ function App() {
 
     return (
         <div className="App">
-            <TodoList title={'What to learn'} tasks={FilteredTasksForRender} removeTask={removeTask} changeFilter={changeFilter}/>
+            <TodoList title={'What to learn'} tasks={FilteredTasksForRender} removeTask={removeTask} changeFilter={changeFilter} addTask={addTask}/>
             {/*<TodoList title={'What to read'} tasks={whatToReadTasks} removeTask={removeTask}/>*/}
             {/*<TodoList title={'What to by'} tasks={whatToByTasks} removeTask={removeTask}/>*/}
         </div>
