@@ -1,0 +1,10 @@
+.task {
+    font-weight: bold;
+}
+
+
+
+.task_completed {
+    color: green;
+    opacity: 0.5;
+}

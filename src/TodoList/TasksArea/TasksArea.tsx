@@ -7,6 +7,7 @@ type TasksAreaPropsType = {
     tasks: Array<TaskType>
     removeTask: (taskID: string) => void
     addTask: (title: string) => void
+    changeTaskStatus: (taskID: string, isDone: boolean) => void
 }
 
 
@@ -16,7 +17,7 @@ const TasksArea = (props: TasksAreaPropsType) => {
     return (
         <div>
             <NewTaskForm addTask={props.addTask}/>
-            <TaskItems tasks={props.tasks} removeTask={props.removeTask}/>
+            <TaskItems tasks={props.tasks} removeTask={props.removeTask} changeTaskStatus={props.changeTaskStatus}/>
         </div>
     );
 };

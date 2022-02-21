@@ -12,6 +12,8 @@ export type TodoListPropsType = {
     removeTask: (taskID: string) => void
     changeFilter: (filter: filterValuesType) => void
     addTask: (title: string) => void
+    filter: filterValuesType
+    changeTaskStatus: (taskID: string, isDone: boolean) => void
 }
 
 export type TaskType = {
@@ -24,9 +26,9 @@ const TodoList = (props: TodoListPropsType) => {
 
     return (
         <div className={style.content}>
-            <Header title={props.title} />
-            <TasksArea tasks={props.tasks} removeTask={props.removeTask} addTask={props.addTask}/>
-            <ButtonsBar changeFilter={props.changeFilter}/>
+            <Header title={props.title} filter={props.filter}/>
+            <TasksArea tasks={props.tasks} removeTask={props.removeTask} addTask={props.addTask} changeTaskStatus={props.changeTaskStatus}/>
+            <ButtonsBar changeFilter={props.changeFilter} filter={props.filter}/>
         </div>
     );
 };
